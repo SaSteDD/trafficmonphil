@@ -4,9 +4,14 @@
 
 TrafficMonitor::TrafficMonitor(QWidget *parent) :
     QWidget(parent),
+    isFullScreen(false),
     ui(new Ui::TrafficMonitor),
     blockSize(8)
 {
+
+    fullScreenShortcut= new QShortcut(QKeySequence("F11"),this);
+    connect(fullScreenShortcut, SIGNAL(activated()), this, SLOT(toggleFullscreen()));
+
     ui->setupUi(this);
 
     tcpSocket = new QTcpSocket(this);
@@ -53,6 +58,17 @@ void TrafficMonitor::readTrafficData()
 void TrafficMonitor::connected()
 {
     qDebug() << "Connected";
+}
+
+void TrafficMonitor::toggleFullscreen()
+{
+    isFullScreen = !isFullScreen;
+
+    if(isFullScreen){
+        this->showFullScreen();
+    } else {
+        this->showNormal();
+    }
 }
 
 double TrafficMonitor::convertToMbps(quint32 Bps)

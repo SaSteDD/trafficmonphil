@@ -22,7 +22,7 @@ void StrechtedLabel::resizeEvent(QResizeEvent *)
                 QFont f(font);
                      f.setPixelSize( fontSize );
                 QRect r = QFontMetrics(f).boundingRect( this->text() );
-                if (r.height() <= 0.8*cRect.height() && r.width() <= 0.8*cRect.width() )
+                if (r.height() <= 0.95*cRect.height() && r.width() <= 0.95*cRect.width() )
                       fontSize++;
                 else
                       break;

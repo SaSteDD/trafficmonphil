@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QTcpSocket>
 #include <QNetworkSession>
+#include <QShortcut>
 
 namespace Ui {
 class TrafficMonitor;
@@ -20,14 +21,18 @@ public:
 private slots:
     void readTrafficData();
     void connected();
+    void toggleFullscreen();
 
 private:
     double convertToMbps(quint32 Bps);
+    bool isFullScreen;
 
     Ui::TrafficMonitor *ui;
+    QShortcut * fullScreenShortcut;
 
     QTcpSocket *tcpSocket;
     quint16 blockSize;
+
 
 };
 
