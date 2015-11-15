@@ -7,7 +7,7 @@ START=10
 STOP=15
 
 # Change the next 3 lines to suit where you install your script and what you want to call it
-DIR=/opt/philNetMon
+DIR=/opt/trafficmonphil
 DAEMON=$DIR/trafficServer.py
 DAEMON_NAME=trafficServerService
 
